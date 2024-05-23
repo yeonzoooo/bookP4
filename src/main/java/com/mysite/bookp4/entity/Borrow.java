@@ -20,7 +20,7 @@ public class Borrow {
   private Book book;
 
   @Column(nullable = false)
-  private String transactionType;
+  private String transactionType; //"대여" "반납"
 
   @Column(nullable = false)
   private LocalDateTime transactionDate;
