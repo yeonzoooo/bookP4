@@ -37,12 +37,18 @@ public class BookControllor {
 
     @PostMapping("/{id}")
 public Book updateBook(@PathVariable Long id, @RequestBody Book bookDetails) {
-        Optional<Book> bookOptional = bookService.findById(id);
-        if (bookOptional.isPresent()) {
-            Book book =bookOptional.get();
+        return bookService.findById(id).map(book -> {
             book.setTitle(bookDetails.getTitle());
             book.setAuthor(bookDetails.getAuthor());
+            book.setCategory(bookDetails.getCategory());
+            book.setAvailable(bookDetails.isAvailable());
+            return bookService.save(Book);
+        }).orElseThrow(() -> new RuntimeException("Book not found whit id" + id));
 
-        }
+    }
+@DeleteMapping("/{id}")
+        public void deteleBook(@PathVariable Long id) {
+    bookService.deleteById(id);
+      }
+      }
 
-}

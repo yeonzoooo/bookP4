@@ -5,6 +5,11 @@ import lombok.*;
 
 @Entity
 @Table(name = "Book")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+
 public class Book {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,5 +26,6 @@ public class Book {
   @Column(nullable = false)
   private boolean available;
 
-  // Getters and setters
 }
+  // Getters and setters
+
