@@ -1,5 +1,6 @@
-package com.mysite.bookp4;
+package com.mysite.bookp4.entity.BookService;
 
+import com.mysite.bookp4.BookRepository;
 import com.mysite.bookp4.entity.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

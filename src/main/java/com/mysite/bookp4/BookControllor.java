@@ -1,6 +1,7 @@
 package com.mysite.bookp4;
 
 import com.mysite.bookp4.entity.Book;
+import com.mysite.bookp4.entity.BookService.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,12 +43,12 @@ public Book updateBook(@PathVariable Long id, @RequestBody Book bookDetails) {
             book.setAuthor(bookDetails.getAuthor());
             book.setCategory(bookDetails.getCategory());
             book.setAvailable(bookDetails.isAvailable());
-            return bookService.save(Book);
+            return bookService.save(bookDetails);
         }).orElseThrow(() -> new RuntimeException("Book not found whit id" + id));
 
     }
 @DeleteMapping("/{id}")
-        public void deteleBook(@PathVariable Long id) {
+        public void deleteBook(@PathVariable Long id) {
     bookService.deleteById(id);
       }
       }
